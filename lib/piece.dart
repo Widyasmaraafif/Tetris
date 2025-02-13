@@ -23,7 +23,7 @@ class Piece {
         position = [-26, -16, -6, -5];
         break;
       case Tetromino.J:
-        position = [-25, -15, -5, -4];
+        position = [-26, -16, -6, -7];
         break;
       case Tetromino.I:
         position = [-4, -5, -6, -7];
@@ -35,7 +35,7 @@ class Piece {
         position = [-15, -14, -5, -6];
         break;
       case Tetromino.Z:
-        position = [-17, -16, -6, -5];
+        position = [-16, -15, -6, -5];
         break;
       case Tetromino.T:
         position = [-26, -16, -6, -15];
@@ -318,76 +318,37 @@ class Piece {
         switch (rotationState) {
           case 0:
             /*
-              
-            0 0
-              0 0
-
-            */
+        Rotasi awal (horizontal)
+        0 0
+          0 0
+      */
             newPosition = [
-              position[0] + rowLength - 2,
+              position[0] - rowLength, // Pindah ke atas
               position[1],
-              position[2] + rowLength - 1,
-              position[3] + 1,
+              position[2] - rowLength, // Pindah ke atas
+              position[3] - 2, // Geser ke kiri
             ];
             if (piecePositionIsValid(newPosition)) {
               position = newPosition;
-              rotationState = (rotationState + 1) % 4;
+              rotationState = 1; // Ubah ke rotasi 1
             }
             break;
           case 1:
             /*
-              
-              0
-            0 0 
-            0
-
-            */
-            newPosition = [
-              position[0] - rowLength + 2,
-              position[1],
-              position[2] - rowLength + 1,
-              position[3] - 1,
-            ];
-            if (piecePositionIsValid(newPosition)) {
-              position = newPosition;
-              rotationState = (rotationState + 1) % 4;
-            }
-            break;
-          case 2:
-            /*
-              
+        Rotasi vertikal
+          0
         0 0
-          0 0
-            
-            */
+        0
+      */
             newPosition = [
-              position[0] + rowLength - 2,
+              position[0] + rowLength, // Pindah ke bawah
               position[1],
-              position[2] + rowLength - 1,
-              position[3] + 1,
+              position[2] + rowLength, // Pindah ke bawah
+              position[3] + 2, // Geser ke kanan
             ];
             if (piecePositionIsValid(newPosition)) {
               position = newPosition;
-              rotationState = (rotationState + 1) % 4;
-            }
-            break;
-          case 3:
-            /*
-
-            0
-          0 0
-          0 
-            
-            */
-            newPosition = [
-              position[0] - rowLength + 2,
-              position[1],
-              position[2] - rowLength,
-              position[3] - 1,
-            ];
-            if (piecePositionIsValid(newPosition)) {
-              position = newPosition;
-              rotationState = (rotationState + 1) % 4;
+              rotationState = 0; // Kembali ke rotasi 0
             }
             break;
         }
