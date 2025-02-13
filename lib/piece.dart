@@ -32,7 +32,7 @@ class Piece {
         position = [-15, -16, -5, -6];
         break;
       case Tetromino.S:
-        position = [-15, -14, -4, -5];
+        position = [-15, -14, -5, -6];
         break;
       case Tetromino.Z:
         position = [-17, -16, -6, -5];
